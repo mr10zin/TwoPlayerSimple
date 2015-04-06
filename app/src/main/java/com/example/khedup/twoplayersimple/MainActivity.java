@@ -6,8 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
 import java.util.ArrayList;
+
 import com.example.khedup.twoplayersimple.Models.Player;
+
 import static android.util.Log.d;
 
 
@@ -98,7 +101,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     public void resetHolds() {
         for (int i = 0; i < 6; i++) {
             diceHold.set(i, false);
-    //        diceButtons.get(i).setBackgroundColor(Color.DKGRAY);
+            //        diceButtons.get(i).setBackgroundColor(Color.DKGRAY);
         }
     }
 
@@ -236,6 +239,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                 rollButton.setText(R.string.player1turn1);
                 numRolls++;
             } else if (numRolls == 1 && playerOneTurn) {
+                resetHolds();
                 updateResults();
                 rollButton.setText(R.string.player1turn2);
                 numRolls++;
@@ -246,18 +250,15 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             } else if (numRolls == 3 && playerOneTurn) {
                 updateResults();
                 rollButton.setText(R.string.finishTurn);
-                numRolls++;
-            } else if (numRolls == 4 && playerOneTurn){
                 numRolls = 0;
-                resetHolds();
                 turn(p1, p2);
                 playerOneTurn = false;
-            }
-            else if (numRolls == 0 && !playerOneTurn) {
+            } else if (numRolls == 0 && !playerOneTurn) {
                 resetResults();
                 rollButton.setText(R.string.player1turn1);
                 numRolls++;
             } else if (numRolls == 1 && !playerOneTurn) {
+                resetHolds();
                 updateResults();
                 rollButton.setText(R.string.player1turn2);
                 numRolls++;
@@ -268,33 +269,29 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             } else if (numRolls == 3 && !playerOneTurn) {
                 updateResults();
                 rollButton.setText(R.string.finishTurn);
-                numRolls++;
-            }
-            else if(numRolls == 4 && !playerOneTurn){
                 numRolls = 0;
-                resetHolds();
                 turn(p2, p1);
                 playerOneTurn = true;
             }
 
-        } else if (v.getId() == R.id.button1 && (numRolls !=0 || numRolls !=4)) {
+        } else if (v.getId() == R.id.button1 && numRolls != 0 && numRolls != 4) {
             diceHold.set(0, true);
-           // diceButtons.get(0).setBackgroundColor(Color.BLACK);
-        } else if (v.getId() == R.id.button2 && numRolls !=0) {
+            // diceButtons.get(0).setBackgroundColor(Color.BLACK);
+        } else if (v.getId() == R.id.button2 && numRolls != 0 && numRolls != 4) {
             diceHold.set(1, true);
-           // diceButtons.get(1).setBackgroundColor(Color.BLACK);
-        } else if (v.getId() == R.id.button3 && numRolls !=0) {
+            // diceButtons.get(1).setBackgroundColor(Color.BLACK);
+        } else if (v.getId() == R.id.button3 && numRolls != 0 && numRolls != 4) {
             diceHold.set(2, true);
-          //  diceButtons.get(2).setBackgroundColor(Color.BLACK);
-        } else if (v.getId() == R.id.button4 && numRolls !=0) {
+            //  diceButtons.get(2).setBackgroundColor(Color.BLACK);
+        } else if (v.getId() == R.id.button4 && numRolls != 0 && numRolls != 4) {
             diceHold.set(3, true);
-          //  diceButtons.get(3).setBackgroundColor(Color.BLACK);
-        } else if (v.getId() == R.id.button5 && numRolls !=0) {
+            //  diceButtons.get(3).setBackgroundColor(Color.BLACK);
+        } else if (v.getId() == R.id.button5 && numRolls != 0 && numRolls != 4) {
             diceHold.set(4, true);
-         //  diceButtons.get(4).setBackgroundColor(Color.BLACK);
-        } else if (v.getId() == R.id.button6 && numRolls !=0) {
+            //  diceButtons.get(4).setBackgroundColor(Color.BLACK);
+        } else if (v.getId() == R.id.button6 && numRolls != 0 && numRolls != 4) {
             diceHold.set(5, true);
-          //  diceButtons.get(5).setBackgroundColor(Color.BLACK);
+            //  diceButtons.get(5).setBackgroundColor(Color.BLACK);
         }
 
 
